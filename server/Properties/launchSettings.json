@@ -1,8 +1,8 @@
 {
   "profiles": {
-    "AZPECA": {
+    "server": {
       "commandName": "Project",
-      "commandLineArgs": "--port 7125",
+      "commandLineArgs": "--port 7166",
       "launchBrowser": false
     }
   }
