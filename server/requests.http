@@ -1,0 +1,78 @@
+POST http://localhost:7071/api/User HTTP/1.1
+content-type: application/json
+
+{
+    "Name": "John",
+    "Surname": "Pork",
+    "Balance": 50
+}
+
+GET http://localhost:7071/api/User HTTP/1.1
+content-type: application/json
+
+{
+}
+
+PUT http://localhost:7071/api/User HTTP/1.1
+content-type: application/json
+
+{
+    "Id": 1,
+    "Name": "Peter",
+    "Surname": "Beef",
+    "Balance": 30
+}
+
+DELETE http://localhost:7071/api/User HTTP/1.1
+content-type: application/json
+
+{
+    "Id": 1
+}
+
+GET http://localhost:7071/api/User HTTP/1.1
+content-type: application/json
+
+{
+    "Id": 2
+}
+
+POST http://localhost:7071/api/Registration HTTP/1.1
+content-type: application/json
+
+{
+    "UserId": 2,
+    "DateEntry": "2022-12-27T08:26:49",
+    "DateExit": "2022-12-28T08:26:49"
+}
+
+GET http://localhost:7071/api/Registration HTTP/1.1
+content-type: application/json
+
+{
+}
+
+PUT http://localhost:7071/api/Registration HTTP/1.1
+content-type: application/json
+
+{
+    "Id": 1,
+    "UserId": 3,
+    "DateEntry": "2022-12-27T08:26:49",
+    "DateExit": "2022-12-28T08:26:49"
+}
+
+DELETE http://localhost:7071/api/Registration HTTP/1.1
+content-type: application/json
+
+{
+    "Id": 1
+}
+
+GET http://localhost:7071/api/Registration HTTP/1.1
+content-type: application/json
+
+{
+    "Id": 1
+}
+

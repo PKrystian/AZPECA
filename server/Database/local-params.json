@@ -1,0 +1,5 @@
+{
+    "ConnectionStrings": {
+        "UserDb": "Server=tcp:krystian-pinczak-sql.database.windows.net,1433;Initial Catalog=KrystianPinczakDB;Persist Security Info=False;User ID=user;Password=zaq1@WSX;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+    }
+}
