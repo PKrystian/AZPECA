@@ -1,8 +1,5 @@
-using System.Windows.Markup;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using User.Function.Database;
-using User.Function;
 
 namespace User.Function.Database
 {

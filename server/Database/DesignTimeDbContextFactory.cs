@@ -1,8 +1,6 @@
-using System.IO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
-using Microsoft.EntityFrameworkCore.SqlServer;
 
 namespace User.Function.Database
 {
