@@ -25,17 +25,25 @@ namespace User.Function
             switch(req.Method.ToLower())
             {
                 case "get":
-                    StreamReader reader0 = new StreamReader(req.Body, System.Text.Encoding.UTF8);
-                    var body0 = reader0.ReadToEnd();
-                    var get = JsonSerializer.Deserialize<RegistrationService.Registration>(body0);
-                    if (get.Id != 0)
+                    if (req.Body.Length > 0)
                     {
-                        var registration_g = _registrationService.Find(get.Id);
-                        response.WriteAsJsonAsync(registration_g);
-                    } else {
-                        var registrations = _registrationService.GetAll();
-                        response.WriteAsJsonAsync(registrations);
+                        StreamReader reader0 = new StreamReader(req.Body, System.Text.Encoding.UTF8);
+                        var body0 = reader0.ReadToEnd();
+
+                        if (!string.IsNullOrEmpty(body0))
+                        {
+                            var get = JsonSerializer.Deserialize<RegistrationService.Registration>(body0);
+                            if (get != null && get.Id != 0)
+                            {
+                                var registration_g = _registrationService.Find(get.Id);
+                                response.WriteAsJsonAsync(registration_g);
+                                break;
+                            }
+                        }
                     }
+
+                    var registrations = _registrationService.GetAll();
+                    response.WriteAsJsonAsync(registrations);
                     break;
                 case "post":
                     StreamReader reader = new StreamReader(req.Body, System.Text.Encoding.UTF8);
