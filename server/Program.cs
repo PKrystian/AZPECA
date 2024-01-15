@@ -17,8 +17,8 @@ var host = new HostBuilder()
     .ConfigureServices((context, services) => {
         services.AddApplicationInsightsTelemetryWorkerService();
         services.ConfigureFunctionsApplicationInsights();
-        services.AddSingleton<UserService>();
-        services.AddSingleton<RegistrationService>();
+        services.AddScoped<UserService>();
+        services.AddScoped<RegistrationService>();
 
         var connectionString = configuration.GetConnectionString("UserDb");
 
