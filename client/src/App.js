@@ -101,7 +101,6 @@ function App() {
 				{users.map((user) => (
 					<li key={user.Id}>
 						{`${user.Name} ${user.Surname} - Balance: ${user.Balance}`}
-						<button onClick={() => handleUpdateUser({ ...user, Name: 'UpdatedName' })}>Update</button>
 						<button onClick={() => handleDeleteUser(user.Id)}>Delete</button>
 					</li>
 				))}
@@ -112,7 +111,6 @@ function App() {
 				{registrations.map((registration) => (
 					<li key={registration.Id}>
 						{`User ${registration.UserId} - Entry: ${registration.DateEntry}, Exit: ${registration.DateExit}`}
-						<button onClick={() => handleUpdateRegistration({...registration, DateEntry: 'TODO-FINISH-THIS', })}>Update</button>
 						<button onClick={() => handleDeleteRegistration(registration.Id)}>Delete</button>
 					</li>
 				))}
