@@ -8,6 +8,7 @@ const UserPanel = () => {
     const [isRunning, setIsRunning] = useState(false);
     const [elapsedTime, setElapsedTime] = useState(0);
     const [remainingBalance, setRemainingBalance] = useState(0);
+    const [currentCost, setCurrentCost] = useState(0);
 
     useEffect(() => {
         let timer;
@@ -24,7 +25,11 @@ const UserPanel = () => {
     useEffect(() => {
         let timeCostForOneBalance = 10;
         if (isRunning && elapsedTime % timeCostForOneBalance === 0) {
-            setRemainingBalance((prevBalance) => Math.max(0, prevBalance - 1));
+            setCurrentCost((prevCost) => prevCost + 1);
+            setRemainingBalance((prevBalance) => {
+                const newBalance = Math.max(0, prevBalance - 1);
+                return newBalance;
+            });
         }
     }, [isRunning, elapsedTime]);
 
@@ -64,8 +69,6 @@ const UserPanel = () => {
     };
 
     const handleStop = async () => {
-        const elapsedTimeInSeconds = elapsedTime;
-        const newBalance = user.Balance - Math.floor(elapsedTimeInSeconds / 10);
         const registration = {
             UserId: user.Id,
             DateEntry: '1753-01-01T00:00:00.000Z',
@@ -73,7 +76,7 @@ const UserPanel = () => {
         };
         const updatedUser = {
             ...user,
-            Balance: newBalance,
+            Balance: remainingBalance,
         };
         try {
             await ApiService.createRegistration(registration);
@@ -129,11 +132,13 @@ const UserPanel = () => {
                                     </tbody>
                                 </table>
                                 <p>Elapsed Time: {elapsedTime} seconds</p>
+                                <p>Current Cost: {currentCost}</p>
                                 <button
                                     type="button"
                                     className={`btn ${isRunning ? 'btn-danger' : 'btn-success'}`}
                                     onClick={isRunning ? handleStop : handleStart}
-                                    >
+                                    disabled={!isRunning && remainingBalance <= 0}
+                                >
                                     {isRunning ? 'Stop' : 'Start'}
                                 </button>
                             </div>
